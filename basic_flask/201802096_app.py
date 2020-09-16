@@ -21,7 +21,7 @@ def get():
 
 @app.route('/post', methods=['POST'])
 def post():
-    value = request.form['']
+    value = request.form['test']
     return value
 
 if __name__ == '__main__':
