@@ -12,7 +12,7 @@ def test_get():
 
 @app.route('/test_post')
 def test_post():
-    return renter_template('post.html')
+    return render_template('post.html')
 
 @app.route('/get', methods=['GET'])
 def get():
