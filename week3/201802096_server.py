@@ -4,7 +4,7 @@ import random
 ip = '192.168.1.10'
 port = 5001
 
-sock = socket.socket(socket.AF_INET, sock.SOCK_STREAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind((ip, port))
 sock.listen()
 
