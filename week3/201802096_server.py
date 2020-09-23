@@ -22,7 +22,7 @@ while True:
 	scores = []
 	for i in clients:
 		#숫자 선택
-		i['conn'].send('Please select 1 number from 1 to 10.')
+		i['conn'].send('Please select 1 number from 1 to 10.'.encode())
 		num = i['conn'].recv(1024)
 		i['num1'] = numbers[num+1]
 		i['num2'] = random.randrange(-1, 5)
