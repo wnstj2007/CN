@@ -19,6 +19,7 @@ for i in clients:
 while True:
 	#난수 10개 생성
 	numbers = [ random.randrange(1,101) for _ in range(10) ]
+	scores = []
 	for i in clients:
 		#숫자 선택
 		i['conn'].send('Please select 1 number from 1 to 10.')
@@ -38,9 +39,13 @@ while True:
 			i['score'] = i['num1']+i['num2']
 		elif oper == 'multiply':
 			i['score'] = i['num1']*i['num2']
+		scores.append(i['score'])
 		i['conn'].send('Okay... please wait.'.encode())
-		
+	scores.sort()
 		
 	for i in clients:
-		pass
+		if i['score'] == score[0]:
+			i['conn'].send('Congratulations. You won!'.encode())
+		else:
+			i['conn'].send('Unfortunately, you hav been defeated.'.encode())
 conn.close()
