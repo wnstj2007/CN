@@ -1,6 +1,6 @@
 import socket
 
-IP = '10.0.2.15'
+IP = '192.168.1.10'
 port = 5001
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
