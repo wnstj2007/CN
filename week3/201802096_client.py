@@ -6,9 +6,22 @@ port = 5001
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((IP, port))
 
-message = 'hello server! I\'m client'
-sock.send(message.encode())
-data = sock.recv(1024)
-sock.close()
 
-print('received message : ' + data.decode())
+print(sock.recv(1024).decode())
+
+#숫자 입력
+print(sock.recv(1024).decode())
+num = int(input('Number : '))
+sock.send(num.encode())
+print(sock.recv(1024).decode())
+
+#연산자 입력
+print(sock.recv(1024).decode())
+oper = input('multiply or add : ')
+sock.send(oper.encode())
+print(sock.recv(1024).decode())
+
+#결과
+print(sock.recv(1024).decode())
+
+sock.close()
