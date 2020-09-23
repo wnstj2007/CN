@@ -23,7 +23,6 @@ while True:
 	for i in clients:
 		#숫자 선택
 		i['conn'].send('Please select 1 number from 1 to 10.')
-		i['conn'].send('Number : '.encode())
 		num = i['conn'].recv(1024)
 		i['num1'] = numbers[num+1]
 		i['num2'] = random.randrange(-1, 5)
@@ -33,7 +32,6 @@ while True:
 	for i in clients:
 		#연산자 선택
 		i['conn'].send('Do you want multiply or add...?'.encode())
-		i['conn'].send('multiply or add : '.encode())
 		oper = i['conn'].recv(1024).decode()
 		if oper == 'add':
 			i['score'] = i['num1']+i['num2']
