@@ -12,7 +12,7 @@ print(sock.recv(1024).decode())
 #숫자 입력
 print(sock.recv(1024).decode())
 num = int(input('Number : '))
-sock.send(num.encode())
+sock.send(num)
 print(sock.recv(1024).decode())
 
 #연산자 입력
