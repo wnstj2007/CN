@@ -1,19 +1,13 @@
 import time
-from locust import HttpUser, task, between
+import socket
+from locust import User, task
 
-class QuickstartUser(HttpUser):
-    wait_time = between(1, 2)
-
+class MyUser(User):
     @task
-    def index_page(self):
-        self.client.get("/hello")
-        self.client.get("/world")
-
-    @task(3)
-    def view_item(self):
-        for item_id in range(10):
-            self.client.get(f"/item?id={item_id}", name="/item")
-            time.sleep(1)
-
-    def on_start(self):
-        self.client.post("/login", json={"username":"foo", "password":"bar"})
+    def test(self):
+        ip = '192.168.1.10'
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect((ip, 8888))
+        data = 'GET / HTTP /1.1'
+        client.send(data.encode)
+        client.close()
