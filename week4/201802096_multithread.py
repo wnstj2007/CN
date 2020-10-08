@@ -2,12 +2,13 @@ from threading import Thread
 import socket
 import os
 
-def send_recv(client):
-	data = client.recv(1024)
-	print("[client {}] {}".format(os.getpid(), data.decode()))
-	data = "HTTP/1.1 200 OK\r\n"
-	client.send(data.encode())
-	client.close()
+def send_recv(client_socket):
+	data = client_socket.recv(1024)
+	print('client {}] {}'.format(os.getpid(), data.decode()))
+	response = 'HTTP/1.1 200 OK\r\n'
+	client_socket.send(response.encode('utf-8'))
+	client_socket.send(data)
+	client_socket.close()
 
 def main(port):
 	serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
